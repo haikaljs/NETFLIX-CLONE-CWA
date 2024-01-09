@@ -1,7 +1,29 @@
+import { NextPageContext } from "next";
+import { getSession, signOut } from "next-auth/react";
+
+export async function getServerSideProps(context: NextPageContext) {
+  const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {}
+  }
+}
+
 export default function Home() {
   return (
     <>
-      <h1 className="text-red-500 text-2xl">Netflix clone</h1>
+      <h1 className="text-red-500 text-6xl">Netflix clone</h1>
+      <button onClick={() => signOut()} className="w-full h-10 bg-white">
+        Logout
+      </button>
     </>
   );
 }
