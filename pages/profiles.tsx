@@ -21,7 +21,7 @@ export async function serverSideProps(context: NextPageContext) {
 
 const Profiles = () => {
   const router = useRouter();
-  const { data: user } = useCurentUser();
+  const { data: currentUser } = useCurentUser();
   return (
     <div className="flex items-center h-full justify-center">
       <div className="flex flex-col">
@@ -35,7 +35,7 @@ const Profiles = () => {
                 <img src="/images/default-blue.png" alt="Profile" />
               </div>
               <div className="mt-4 text-gray-400 text-2xl text-center group-hover:text-white">
-                {user?.name}
+                {currentUser?.name}
               </div>
             </div>
           </div>
